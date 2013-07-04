@@ -5,6 +5,9 @@ gem 'rails', '4.0.0.rc2'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'bcrypt-ruby'
 
+# Authentication
+gem 'devise', '3.0.0.rc'
+
 ruby '2.0.0'
 
 group :development, :test do
