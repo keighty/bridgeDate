@@ -1,6 +1,14 @@
 Bridge::Application.routes.draw do
   resources :users
 
+  get "users/new"
+  root to: 'pages#home'
+  match '/help', to: 'pages#help', via: 'get'
+  match '/about', to: 'pages#about', via: 'get'
+
+  match '/signup', to: 'users#new', via: 'get'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -41,7 +49,7 @@ Bridge::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
