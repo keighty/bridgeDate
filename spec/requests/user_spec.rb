@@ -45,6 +45,14 @@ describe User do
       user_with_same_email.save
       expect(@user).not_to be_valid
     end
+    it "should be saved as all lowercase" do
+      mixed_case_email = "Foo@ExAmPlE.CoM"
+      @user.email = "Foo@ExAmPlE.CoM"
+      @user.password = "foobar"
+      @user.password_confirmation = "foobar"
+      @user.save
+      @user.reload.email.should == mixed_case_email.downcase
+    end
   end
 
 
