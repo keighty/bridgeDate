@@ -23,6 +23,7 @@ group :test do
   gem 'growl'
   gem 'guard-spork'
   gem 'spork'
+  gem 'factory_girl_rails', '4.1.0'
 end
 
 group :production do
