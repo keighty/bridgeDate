@@ -1,7 +1,6 @@
 Bridge::Application.routes.draw do
   resources :users
 
-  get "users/new"
   root to: 'pages#home'
   match '/help', to: 'pages#help', via: 'get'
   match '/about', to: 'pages#about', via: 'get'
