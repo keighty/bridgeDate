@@ -11,7 +11,7 @@ describe "Pages" do
   describe "Home page" do
     before { visit root_path }
 
-    let(:heading) { 'Social Bridge' }
+    let(:heading) { 'Bridge Date' }
     let(:page_title) { '' }
 
     it_should_behave_like "all pages"
