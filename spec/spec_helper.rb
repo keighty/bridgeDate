@@ -94,6 +94,8 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.render_views
+  config.include FactoryGirl::Syntax::Methods
+
 
   config.include Capybara::DSL
 end
