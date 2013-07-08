@@ -4,9 +4,12 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0.rc2'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'bcrypt-ruby'
+gem 'faker'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 # Authentication
-gem 'devise', '3.0.0.rc'
+gem 'devise'
 
 ruby '2.0.0'
 
@@ -19,6 +22,8 @@ end
 
 group :test do
   gem 'capybara'
+  # gem 'cucumber-rails'
+  gem 'database_cleaner'
   gem 'rb-fsevent'
   gem 'growl'
   gem 'guard-spork'

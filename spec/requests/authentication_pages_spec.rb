@@ -9,11 +9,16 @@ describe "Authentication" do
     it { should have_content('Sign in') }
     it { should have_title('Sign in') }
 
-    describe "with invalid information" do
-      before { click_button "Sign in" }
+  end
 
-      it { should have_title('Sign in') }
-      it { should have_selector('div.alert.alert-error', text: 'Invalid') }
+  describe "signin" do
+    before { visit signin_path }
+
+      describe "with invalid information" do
+        before { click_button "Sign in" }
+
+        it { should have_title('Sign in') }
+        it { should have_selector('div.alert.alert-error', text: 'Invalid') }
 
       describe "after visiting another page" do
         before { click_link "Home" }
