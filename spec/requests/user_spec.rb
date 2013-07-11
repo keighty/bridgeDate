@@ -36,6 +36,7 @@ describe User do
       before { @user.email = "" }
       it { should_not be_valid }
     end
+
     it "should be in a valid format" do
       samples = %w[user@foo,com user_at_foo.org example@foo foo@.com foo@bar+baz.com]
       samples.each do |invalid_address|
@@ -43,12 +44,14 @@ describe User do
         expect(@user).not_to be_valid
       end
     end
+
     it "should be unique" do
       user_with_same_email = @user.dup
       user_with_same_email.email = @user.email.upcase
       user_with_same_email.save
       expect(@user).not_to be_valid
     end
+
     it "should be saved as all lowercase" do
       mixed_case_email = "Foo@ExAmPlE.CoM"
       @user.email = "Foo@ExAmPlE.CoM"
