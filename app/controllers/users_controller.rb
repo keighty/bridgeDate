@@ -30,6 +30,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        sign_in @user
         flash[:success] = "Welcome to Bridge Date!"
         format.html { redirect_to @user }
         format.json { render action: 'show', status: :created, location: @user }
