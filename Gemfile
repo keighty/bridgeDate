@@ -22,7 +22,7 @@ end
 
 group :test do
   gem 'capybara'
-  # gem 'cucumber-rails'
+  gem 'cucumber-rails'
   gem 'database_cleaner'
   gem 'rb-fsevent'
   gem 'growl'
