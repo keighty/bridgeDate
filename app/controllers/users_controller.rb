@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :correct_user,    only: [:edit, :update]
 
   def index
-    @users = User.all
+    @users = User.paginate(page: params[:page])
   end
 
   def show
@@ -50,11 +50,9 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url }
-      format.json { head :no_content }
-    end
+    User.find(params[:id]).destroy
+    flash[:success] = "User destroyed"
+    redirect_to users_url
   end
 
   private
@@ -65,7 +63,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :remember_token)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
     def signed_in_user
