@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :signed_in_user,  only: [:index, :edit, :update]
   before_action :correct_user,    only: [:edit, :update]
+  before_action :admin_user,      only: [:destroy]
 
   def index
     @users = User.paginate(page: params[:page])
@@ -10,17 +11,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  # GET /users/new
   def new
     @user = User.new
   end
 
-  # GET /users/1/edit
   def edit
   end
 
-  # POST /users
-  # POST /users.json
   def create
     @user = User.new(user_params)
 
@@ -47,8 +44,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "User destroyed"
@@ -76,5 +71,9 @@ class UsersController < ApplicationController
     def correct_user
       set_user
       redirect_to(root_path) unless current_user?(@user)
+    end
+
+    def admin_user
+      redirect_to(root_path) unless current_user.admin?
     end
 end
