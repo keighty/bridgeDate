@@ -18,7 +18,6 @@ describe "Authentication" do
 
     describe "with invalid information" do
       before { click_button "Sign in" }
-
       it { should have_title('Sign in') }
       it { should have_selector('div.alert.alert-error', :text => 'Invalid') }
     end
@@ -107,6 +106,16 @@ describe "Authentication" do
 
       describe "submitting a DELETE request to the Users#destroy action" do
         before { delete user_path(user) }
+        specify { expect(response).to redirect_to(root_path) }
+      end
+
+      describe "visiting #new should redirect to root" do
+        before { patch new_user_path }
+        specify { expect(response).to redirect_to(root_path) }
+      end
+
+      describe "visiting #create should redirect to root" do
+        before { post "/users", user: FactoryGirl.attributes_for(:user) }
         specify { expect(response).to redirect_to(root_path) }
       end
     end
