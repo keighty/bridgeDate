@@ -1,4 +1,6 @@
 Bridge::Application.routes.draw do
+  resources :clubs
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
